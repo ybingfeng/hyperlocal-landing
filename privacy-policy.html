@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Hyperlocal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #2C1810;
+      --secondary: #8B7B6B;
+      --accent: #D47C5A;
+      --bg: #FAF7F3;
+      --surface: #F2EDE6;
+      --border: rgba(44,24,16,0.1);
+      --text: #374151;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,247,243,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--primary); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-divider { color: var(--border); font-size: 1.1rem; }
+    .nav-title { font-size: 0.875rem; font-weight: 700; color: var(--primary); }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .intro {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section { margin-bottom: 32px; }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .sub-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+    ul li {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+    ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--primary);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(250,247,243,0.55);
+    }
+    footer a { color: rgba(250,247,243,0.75); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="/">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Hyperlocal
+    </a>
+    <span class="nav-divider">/</span>
+    <span class="nav-title">Privacy Policy</span>
+  </div>
+</nav>
+
+<div class="page">
+  <p class="last-updated">Last updated: 21 March 2026</p>
+
+  <p class="intro">
+    Hyperlocal ("we", "our", or "us") is committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use the Hyperlocal mobile application, in accordance with Singapore's Personal Data Protection Act 2012 (PDPA).
+  </p>
+
+  <div class="section">
+    <h2 class="section-title">1. Information We Collect</h2>
+    <p>We collect the following types of information:</p>
+
+    <p class="sub-title">Account Information</p>
+    <ul>
+      <li>Full name and email address when you register an account</li>
+      <li>Profile information provided via Google or Apple sign-in</li>
+      <li>Password (stored securely — we never see your plain-text password)</li>
+    </ul>
+
+    <p class="sub-title">Location Information</p>
+    <ul>
+      <li>GPS coordinates, collected only when you grant permission, to show nearby businesses</li>
+      <li>Postal codes you manually enter for proximity search</li>
+      <li>Location data is used in real time and is not stored on our servers</li>
+    </ul>
+
+    <p class="sub-title">Business &amp; Content Information</p>
+    <ul>
+      <li>Business name, description, category, and contact details submitted by business owners</li>
+      <li>Product and service listings, images, and pricing</li>
+      <li>Reviews and ratings you submit</li>
+    </ul>
+
+    <p class="sub-title">Messaging</p>
+    <ul>
+      <li>Messages sent between customers and business owners via the in-app chat</li>
+    </ul>
+
+    <p class="sub-title">Device &amp; Usage Information</p>
+    <ul>
+      <li>Device type and operating system (collected automatically by our infrastructure)</li>
+      <li>App usage logs for debugging and performance monitoring</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">2. How We Use Your Information</h2>
+    <ul>
+      <li>To create and manage your account</li>
+      <li>To display home-based businesses near your location</li>
+      <li>To facilitate communication between customers and business owners</li>
+      <li>To process and display reviews on business listings</li>
+      <li>To send in-app notifications about your reviews, messages, and account activity</li>
+      <li>To improve the app and fix technical issues</li>
+      <li>To comply with legal obligations under Singapore law</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">3. How We Share Your Information</h2>
+    <p>We do not sell your personal data. We share information only in the following circumstances:</p>
+    <ul>
+      <li>With Supabase (our database and authentication provider) who processes data on our behalf under strict data processing agreements</li>
+      <li>With Google or Apple when you choose to sign in via those services</li>
+      <li>With other users as necessary — for example, your display name is visible on reviews you submit, and business owners can see your name when you send them a message</li>
+      <li>With law enforcement or regulatory authorities if required by Singapore law</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">4. Data Storage &amp; Security</h2>
+    <p>Your data is stored securely on Supabase infrastructure. We implement Row-Level Security (RLS) to ensure users can only access data they are authorised to view. Images are stored in secured cloud storage buckets with access controls.</p>
+    <p>While we take reasonable steps to protect your data, no system is completely secure. We encourage you to use a strong password and not share your account credentials.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">5. Data Retention</h2>
+    <ul>
+      <li>Account data is retained for as long as your account is active</li>
+      <li>Messages are retained to preserve conversation history between parties</li>
+      <li>Reviews are retained as part of the business listing record</li>
+      <li>You may request deletion of your account and associated data at any time (see Section 7)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">6. Cookies &amp; Tracking</h2>
+    <p>The Hyperlocal app does not use browser cookies. We use Supabase session tokens stored securely on your device to keep you signed in. We do not use third-party advertising trackers.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">7. Your Rights Under PDPA</h2>
+    <p>As a user in Singapore, you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Correct any inaccurate personal data</li>
+      <li>Withdraw consent for the use of your personal data</li>
+      <li>Request deletion of your account and personal data</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="mailto:admin@hyperlocal.sg">admin@hyperlocal.sg</a>. We will respond within 30 days.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">8. Children's Privacy</h2>
+    <p>Hyperlocal is not intended for use by children under the age of 13. We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us and we will promptly delete it.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">9. Third-Party Services</h2>
+    <p>The app integrates with the following third-party services, each with their own privacy policies:</p>
+    <ul>
+      <li>Supabase — database, authentication, and file storage</li>
+      <li>Google — OAuth sign-in and Maps API</li>
+      <li>Apple — OAuth sign-in</li>
+      <li>OneMap (Singapore Land Authority) — postal code geocoding</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes via in-app notification. Continued use of the app after changes are posted constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">11. Contact Us</h2>
+    <p>If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:</p>
+    <p>📧 <a href="mailto:admin@hyperlocal.sg">admin@hyperlocal.sg</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Hyperlocal. All rights reserved. &nbsp;|&nbsp; <a href="/privacy-policy.html">Privacy Policy</a> <a href="/terms-of-service.html">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>

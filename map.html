@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Businesses — Hyperlocal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:   #2C1810;
+      --secondary: #8B7B6B;
+      --accent:    #D47C5A;
+      --bg:        #FAF7F3;
+      --surface:   #F2EDE6;
+      --success:   #658F69;
+      --white:     #FFFDF9;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: relative;
+      z-index: 200;
+      background: rgba(250,247,243,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(44,24,16,0.08);
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--primary); }
+    .nav-back svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-divider { color: rgba(44,24,16,0.2); }
+    .nav-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .nav-count {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--secondary);
+      background: var(--surface);
+      border: 1px solid rgba(44,24,16,0.08);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    /* ── MAP ── */
+    #map {
+      width: 100%;
+      height: calc(100vh - 56px);
+    }
+
+    /* ── Popup ── */
+    .hl-popup .leaflet-popup-content-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 6px 28px rgba(44,24,16,0.16);
+      padding: 0;
+      border: 1px solid rgba(44,24,16,0.07);
+    }
+    .hl-popup .leaflet-popup-content { margin: 14px 18px; }
+    .hl-popup .leaflet-popup-tip-container { margin-top: -1px; }
+    .hl-popup .leaflet-popup-tip { background: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Hyperlocal
+    </a>
+    <span class="nav-divider">/</span>
+    <span class="nav-title">Explore Businesses</span>
+  </div>
+  <span class="nav-count" id="bizCount">Loading…</span>
+</nav>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  (function () {
+    var SUPABASE_URL      = 'https://nuwjgjvxxcticwiluptp.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51d2pnanZ4eGN0aWN3aWx1cHRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5ODgwMjAsImV4cCI6MjA4OTU2NDAyMH0.5zRmdcNL9gQ1DcjHw4roC3MeL3ZFg1Qlh25pMGw6zx0';
+
+    var map = L.map('map', {
+      center: [1.3521, 103.8198],
+      zoom: 12,
+      zoomControl: true,
+      scrollWheelZoom: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    function makeIcon() {
+      return L.divIcon({
+        className: '',
+        html: '<div style="width:14px;height:14px;border-radius:50%;background:#D47C5A;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(44,24,16,0.35);"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        popupAnchor: [0, -10]
+      });
+    }
+
+    var client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    client
+      .from('businesses_view')
+      .select('id, name, category, lat, lng, address')
+      .eq('status', 'active')
+      .not('lat', 'is', null)
+      .not('lng', 'is', null)
+      .then(function (res) {
+        var countEl = document.getElementById('bizCount');
+        if (res.error || !res.data) {
+          countEl.textContent = '—';
+          return;
+        }
+        countEl.textContent = res.data.length + ' businesses';
+        res.data.forEach(function (biz) {
+          var popup =
+            '<div style="font-family:\'Quicksand\',sans-serif;min-width:170px;">' +
+              '<div style="font-weight:700;font-size:0.95rem;color:#2C1810;margin-bottom:4px;">' + biz.name + '</div>' +
+              '<div style="font-size:0.78rem;color:#D47C5A;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">' + (biz.category || '') + '</div>' +
+              (biz.address ? '<div style="font-size:0.8rem;color:#8B7B6B;font-weight:500;">' + biz.address + '</div>' : '') +
+            '</div>';
+          L.marker([biz.lat, biz.lng], { icon: makeIcon() })
+            .bindPopup(popup, { maxWidth: 240, className: 'hl-popup' })
+            .addTo(map);
+        });
+      });
+  })();
+</script>
+
+</body>
+</html>

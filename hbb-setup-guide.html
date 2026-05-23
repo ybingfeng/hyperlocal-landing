@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HBB Setup Guide — Hyperlocal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #2C1810;
+      --secondary: #8B7B6B;
+      --accent: #D47C5A;
+      --accent-light: #E8A98A;
+      --bg: #FAF7F3;
+      --surface: #F2EDE6;
+      --success: #658F69;
+      --border: rgba(44,24,16,0.1);
+      --text: #374151;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,247,243,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--primary); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-divider { color: var(--border); font-size: 1.1rem; }
+    .nav-title { font-size: 0.875rem; font-weight: 700; color: var(--primary); }
+
+    /* ── Page ── */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Hero strip ── */
+    .guide-hero {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px 28px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+    }
+    .guide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+    .guide-hero h1 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .guide-hero p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--secondary);
+      margin-bottom: 0;
+    }
+
+    /* ── Steps ── */
+    .step {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.35;
+    }
+    .step-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-top: 2px;
+    }
+
+    /* ── Typography ── */
+    p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .sub-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    ul {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+    ul li {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+    ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Callouts ── */
+    .tip {
+      background: rgba(212,124,90,0.08);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .tip strong { color: var(--accent); font-weight: 700; }
+
+    .required-box {
+      background: rgba(220, 38, 38, 0.06);
+      border-left: 3px solid #DC2626;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .required-box strong { color: #DC2626; font-weight: 700; }
+
+    .note {
+      background: rgba(101,143,105,0.08);
+      border-left: 3px solid var(--success);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .note strong { color: var(--success); font-weight: 700; }
+
+    /* ── Section divider label ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px;
+      margin-top: 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--primary);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(250,247,243,0.55);
+    }
+    footer a { color: rgba(250,247,243,0.75); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="/">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Hyperlocal
+    </a>
+    <span class="nav-divider">/</span>
+    <span class="nav-title">HBB Setup Guide</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="guide-hero">
+    <div class="guide-badge">For Home-Based Businesses</div>
+    <h1>Get your HBB listed on Hyperlocal</h1>
+    <p>Follow these steps to set up your business, configure your offerings, and start receiving orders — all from your phone.</p>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Download the app &amp; sign up</div>
+      </div>
+    </div>
+    <p>Download Hyperlocal from the App Store (03/05/2026) or Google Play (coming soon!), then create an account using your email, Google, or Apple account.</p>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Submit your listing</div>
+      </div>
+    </div>
+    <p>Tap the <strong>My Business</strong> tab and fill in your business details — name, category, description, address, and contact number. Once submitted, your listing will be <strong>Under Review</strong>. We'll notify you once it's approved and live on Hyperlocal.</p>
+  </div>
+
+  <!-- Step 3 — main focus -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Set up your My Business page</div>
+        <div class="step-subtitle">Once your listing is approved, complete the steps below before customers can order from you</div>
+      </div>
+    </div>
+
+    <p>When your listing is approved, your status changes to <strong>Active</strong> and your full <strong>My Business</strong> dashboard becomes available. This is where everything is managed. There are four things you must complete before your business is ready to take orders.</p>
+
+    <div class="required-box">
+      <strong>Requirements before you can take orders:</strong>
+      <ul style="margin-top: 8px; margin-bottom: 0;">
+        <li>At least 1 product or service added</li>
+        <li>At least 1 open day set within the current month</li>
+        <li>Stripe account connected to receive payments</li>
+        <li>At least one fulfillment method enabled (Pickup or Delivery)</li>
+      </ul>
+    </div>
+
+    <!-- Products & Services -->
+    <p class="sub-title">Products &amp; Services <span style="color:#DC2626; font-size:0.75rem; font-weight:700; margin-left:6px;">REQUIRED</span></p>
+    <p>Tap <strong>Products &amp; Services</strong> to add what you're selling. Each item needs a name and a price. You can add up to 5 photos per item.</p>
+    <ul>
+      <li><strong>Variation Groups</strong> — if your product comes in different sizes or flavours, add a variation group (e.g. "Size: Small, Large"). Each option can have its own price add-on, or none if the base price applies.</li>
+      <li><strong>Max Quantity Per Time Slot</strong> — caps how many units can be ordered in a single time block. Set this to prevent overbooking.</li>
+      <li><strong>Bundles</strong> — group 2 or more existing products into a single listing for gift sets or value packs.</li>
+    </ul>
+    <div class="tip"><strong>Tip:</strong> You must add standard products before you can create a bundle from them.</div>
+
+    <!-- Opening Hours -->
+    <p class="sub-title">Opening Hours <span style="color:#DC2626; font-size:0.75rem; font-weight:700; margin-left:6px;">REQUIRED</span></p>
+    <p>Tap <strong>Opening Hours</strong> to set the dates you're available. You must have at least one open day set within the current month.</p>
+    <ul>
+      <li>Toggle <strong>Open on this day</strong> for each date you're available</li>
+      <li>Add <strong>Time Blocks</strong> within each open day (e.g. 10am–12pm, 2pm–5pm) — customers will pick a slot when ordering. You can set up to 5 blocks per day.</li>
+      <li>Use <strong>Weekly Preset</strong> to bulk-apply your schedule to the next several weeks at once, so you don't have to set each date manually.</li>
+    </ul>
+    <div class="tip"><strong>Tip:</strong> If no time blocks are set on an open day, customers see you're open but with no specific hours to choose from. Always add at least one time block.</div>
+
+    <!-- Order Settings -->
+    <p class="sub-title">Order Settings <span style="color:#DC2626; font-size:0.75rem; font-weight:700; margin-left:6px;">REQUIRED</span></p>
+    <p>In the <strong>Order Settings</strong> section on the My Business page, you must enable at least one fulfillment method.</p>
+    <ul>
+      <li><strong>Accept Pickup Orders</strong> — customers collect their order from your location</li>
+      <li><strong>Accept Delivery Orders</strong> — customers request delivery to their address; set your delivery fee (SGD) if you enable this</li>
+      <li><strong>Advance Notice Required</strong> — set the minimum number of days customers must order in advance (options range from same day up to 3 weeks)</li>
+    </ul>
+    <p>Tap <strong>Save Order Settings</strong> once done. You cannot save if neither pickup nor delivery is enabled.</p>
+
+    <!-- Wallet / Stripe -->
+    <p class="sub-title">Wallet — Connect Stripe <span style="color:#DC2626; font-size:0.75rem; font-weight:700; margin-left:6px;">REQUIRED</span></p>
+    <p>Tap the <strong>Wallet</strong> icon on your dashboard to connect your Stripe account. This is required to receive payments from orders. If Stripe isn't fully connected, a red badge will appear on the Wallet icon as a reminder.</p>
+    <ul>
+      <li>Tap <strong>Connect Stripe</strong> to begin onboarding — you'll be guided through Stripe's setup flow</li>
+      <li>If you've started but not finished, the button shows <strong>Complete Stripe Setup</strong></li>
+      <li>Once fully connected, you'll see your available balance and payout history here</li>
+    </ul>
+    <div class="note"><strong>Note:</strong> Listing on Hyperlocal is free. We charge a 5% platform fee per order, capped at $60/month. Once the cap is reached, subsequent orders incur only the payment processing fee.</div>
+
+    <!-- Other dashboard shortcuts -->
+    <p class="sub-title">Other dashboard shortcuts</p>
+    <ul>
+      <li><strong>Orders</strong> — view and manage incoming orders; confirm, complete, or cancel</li>
+      <li><strong>Messages</strong> — respond to customer enquiries before and after orders</li>
+      <li><strong>Edit Listing Details</strong> — update your business name, description, photos, address, or contact info at any time</li>
+    </ul>
+
+  </div>
+
+  <!-- Tips -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Tips for a successful listing</div>
+      </div>
+    </div>
+    <ul>
+      <li><strong>Great photos sell products</strong> — add clear, well-lit photos for each item; natural lighting works well</li>
+      <li><strong>Write detailed descriptions</strong> — mention ingredients, allergens, and what makes your product special</li>
+      <li><strong>Keep your schedule accurate</strong> — update your opening hours when you're on leave or during holidays</li>
+      <li><strong>Respond to messages quickly</strong> — fast replies build trust and often lead to confirmed orders</li>
+      <li><strong>Ask happy customers for reviews</strong> — positive reviews improve your visibility in search</li>
+    </ul>
+  </div>
+
+  <!-- Help -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num" style="background: var(--secondary);">?</div>
+      <div>
+        <div class="step-title">Need help?</div>
+      </div>
+    </div>
+    <p>If you run into any issues or have questions about running your business on Hyperlocal, reach out — we're happy to help.</p>
+    <p>📧 <a href="mailto:admin@hyperlocal.sg">admin@hyperlocal.sg</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Hyperlocal. All rights reserved. &nbsp;|&nbsp; <a href="/privacy-policy.html">Privacy Policy</a> <a href="/terms-of-service.html">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
