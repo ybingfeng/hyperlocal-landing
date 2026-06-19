@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Home-Based Businesses — Hyperlocal</title>
+  <meta name="description" content="Sell from home with Hyperlocal. Free listing, order management, scheduling, and payments — built for Singapore's home-based businesses. Plus Hyperlocal Pro for analytics, broadcasts, and loyalty cards." />
+  <link rel="canonical" href="https://hyperlocal.sg/for-hbbs" />
+  <link rel="icon" href="icon.png" type="image/png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hyperlocal.sg/for-hbbs" />
+  <meta property="og:title" content="For Home-Based Businesses — Hyperlocal" />
+  <meta property="og:description" content="List your HBB on Hyperlocal. Free tools to manage orders, schedule, and payments — with Pro for growth." />
+  <meta property="og:image" content="https://hyperlocal.sg/Hyperlocal%20iPhone%20Frame.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:      #2C1810;
+      --secondary:    #8B7B6B;
+      --accent:       #D47C5A;
+      --accent-light: #E8A98A;
+      --bg:           #FAF7F3;
+      --surface:      #F2EDE6;
+      --success:      #658F69;
+      --white:        #FFFDF9;
+      --text-body:    #4A3728;
+      --border:       rgba(44,24,16,0.08);
+      --radius-card:  16px;
+      --radius-btn:   50px;
+      --shadow-card:  0 4px 24px rgba(44,24,16,0.08), 0 1px 4px rgba(44,24,16,0.04);
+      --shadow-hover: 0 8px 40px rgba(44,24,16,0.14), 0 2px 8px rgba(44,24,16,0.06);
+      --max-w: 1080px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ── Scroll reveal ─────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(.22,.68,0,1.2), transform 0.65s cubic-bezier(.22,.68,0,1.2); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+    .reveal-delay-4 { transition-delay: 0.46s; }
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,243,0.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(44,24,16,0.07);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-left { display: flex; align-items: center; gap: 28px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 36px; height: 36px; border-radius: 10px; overflow: hidden; }
+    .nav-logo-mark img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+    .nav-wordmark { font-weight: 700; font-size: 1.2rem; color: var(--primary); letter-spacing: -0.3px; }
+    .nav-link { font-size: 0.875rem; font-weight: 600; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover { color: var(--primary); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-btn {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 0.875rem; font-weight: 600; color: var(--secondary);
+      background: none; border: none; cursor: pointer;
+      font-family: 'Quicksand', sans-serif; padding: 0; transition: color 0.2s;
+    }
+    .nav-dropdown-btn:hover, .nav-dropdown.open .nav-dropdown-btn { color: var(--primary); }
+    .nav-dropdown-btn .chevron { width: 14px; height: 14px; transition: transform 0.22s; flex-shrink: 0; }
+    .nav-dropdown.open .chevron, .nav-dropdown:hover .chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 8px); left: -12px;
+      background: var(--white); border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(44,24,16,0.14), 0 2px 8px rgba(44,24,16,0.06);
+      border: 1px solid rgba(44,24,16,0.08); padding: 6px;
+      min-width: 220px; opacity: 0; visibility: hidden;
+      transform: translateY(-6px); transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-item {
+      display: block; padding: 10px 14px; border-radius: 9px;
+      text-decoration: none; transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-item:hover { background: var(--surface); }
+    .dropdown-item-label { font-size: 0.875rem; font-weight: 700; color: var(--primary); display: block; }
+    .dropdown-item-sub { font-size: 0.775rem; font-weight: 500; color: var(--secondary); display: block; margin-top: 1px; }
+    .dropdown-active .dropdown-item-label { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent); color: var(--white);
+      font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.875rem;
+      border: none; border-radius: var(--radius-btn); padding: 10px 22px;
+      cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #c06843; transform: translateY(-1px); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      background: var(--primary);
+      padding: 80px 24px 76px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 65% at 90% 30%, rgba(212,124,90,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 5% 75%, rgba(101,143,105,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(250,247,243,0.055) 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 0.9fr; gap: 64px; align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(212,124,90,0.2); border: 1px solid rgba(212,124,90,0.35);
+      color: var(--accent-light); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.7px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 5vw, 3.9rem);
+      font-weight: 700; color: var(--bg); line-height: 1.1;
+      letter-spacing: -1.2px; margin-bottom: 24px;
+    }
+    .hero-title .hl { color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      font-weight: 500; color: rgba(250,247,243,0.62);
+      max-width: 460px; margin-bottom: 40px; line-height: 1.75;
+    }
+
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+
+    .btn-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg); color: var(--primary);
+      font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 0.925rem;
+      border: none; border-radius: var(--radius-btn); padding: 14px 28px;
+      cursor: pointer; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+    .btn-ghost-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(250,247,243,0.72);
+      font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.925rem;
+      border: 1.5px solid rgba(250,247,243,0.22); border-radius: var(--radius-btn); padding: 13px 26px;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost-light:hover { background: rgba(250,247,243,0.08); border-color: rgba(250,247,243,0.44); color: var(--bg); }
+
+    .hero-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
+    .hero-stat { padding: 0 20px; }
+    .hero-stat:first-child { padding-left: 0; }
+    .hero-stat-num { font-size: 1.55rem; font-weight: 700; color: var(--bg); letter-spacing: -0.5px; line-height: 1; }
+    .hero-stat-label { font-size: 0.72rem; font-weight: 600; color: rgba(250,247,243,0.45); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+    .hero-stat-divider { width: 1px; height: 36px; background: rgba(250,247,243,0.14); }
+
+    /* Hero visual — floating dashboard cards */
+    .hero-visual { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+
+    .hcard {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(250,247,243,0.07);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(250,247,243,0.11);
+      border-radius: 14px; padding: 13px 18px;
+      width: fit-content; min-width: 220px;
+    }
+    .hcard:nth-child(1) { animation: hfloat 7s ease-in-out infinite; }
+    .hcard:nth-child(2) { animation: hfloat 8s ease-in-out infinite -2.5s; margin-right: 28px; }
+    .hcard:nth-child(3) { animation: hfloat 6.5s ease-in-out infinite -1s; }
+    .hcard:nth-child(4) { animation: hfloat 9s ease-in-out infinite -3.5s; margin-right: 44px; }
+    .hcard:nth-child(5) { animation: hfloat 7.5s ease-in-out infinite -5s; }
+    .hcard:nth-child(6) { animation: hfloat 8.5s ease-in-out infinite -1.5s; margin-right: 20px; }
+    @keyframes hfloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+
+    .hcard-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hcard-icon svg { width: 18px; height: 18px; }
+    .hcard-body {}
+    .hcard-title { font-size: 0.82rem; font-weight: 700; color: rgba(250,247,243,0.9); line-height: 1.3; }
+    .hcard-sub { font-size: 0.72rem; font-weight: 500; color: rgba(250,247,243,0.48); margin-top: 1px; }
+    .hcard-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 2px 7px; border-radius: 50px; margin-left: auto; flex-shrink: 0;
+    }
+    .badge-pro { background: rgba(212,124,90,0.25); color: var(--accent-light); border: 1px solid rgba(212,124,90,0.35); }
+
+    /* ── SECTION COMMONS ──────────────────────────────────── */
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+    .section-title { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--primary); letter-spacing: -0.7px; line-height: 1.18; margin-bottom: 14px; }
+    .section-sub { font-size: 1rem; font-weight: 500; color: var(--secondary); max-width: 520px; line-height: 1.65; margin-bottom: 52px; }
+
+    /* ── FREE FEATURES ────────────────────────────────────── */
+    .free-section { background: var(--surface); padding: 90px 24px; }
+
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+
+    .feat-card {
+      background: var(--white); border-radius: var(--radius-card);
+      padding: 30px 26px 28px; box-shadow: var(--shadow-card);
+      border: 1px solid rgba(44,24,16,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent); opacity: 0; transition: opacity 0.25s;
+    }
+    .feat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .feat-card:hover::after { opacity: 1; }
+
+    .feat-icon-wrap {
+      width: 50px; height: 50px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .feat-icon-wrap svg { width: 24px; height: 24px; }
+    .feat-category {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.7px; color: var(--secondary); margin-bottom: 8px;
+    }
+    .feat-name { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; letter-spacing: -0.2px; }
+    .feat-desc { font-size: 0.875rem; font-weight: 500; color: var(--secondary); margin-bottom: 18px; line-height: 1.65; }
+    .feat-items { list-style: none; }
+    .feat-items li {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 0.875rem; font-weight: 500; color: var(--text-body); padding: 4px 0;
+    }
+    .feat-items li::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--success); flex-shrink: 0;
+    }
+
+    /* ── ZERO FEES ────────────────────────────────────────── */
+    .zero-section { padding: 56px 24px; background: var(--bg); }
+    .zero-box {
+      max-width: var(--max-w); margin: 0 auto;
+      background: linear-gradient(135deg, rgba(212,124,90,0.07) 0%, rgba(101,143,105,0.06) 100%);
+      border: 1.5px solid rgba(212,124,90,0.2); border-radius: 20px;
+      padding: 40px 48px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
+    }
+    .zero-icon {
+      width: 60px; height: 60px; border-radius: 16px;
+      background: rgba(212,124,90,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .zero-icon svg { width: 28px; height: 28px; }
+    .zero-content { flex: 1; min-width: 200px; }
+    .zero-title { font-size: 1.35rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .zero-body { font-size: 0.97rem; font-weight: 500; color: var(--secondary); line-height: 1.7; }
+    .zero-body strong { color: var(--primary); }
+
+    /* ── HOW IT WORKS ─────────────────────────────────────── */
+    .hiw-section { padding: 90px 24px; background: var(--white); }
+    .hiw-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+      position: relative;
+    }
+    .hiw-steps::before {
+      content: ''; position: absolute;
+      top: 27px; left: 12%; right: 12%; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212,124,90,0.35) 20%, rgba(212,124,90,0.35) 80%, transparent);
+      pointer-events: none;
+    }
+    .hiw-step { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hiw-num {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--accent); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(212,124,90,0.3); flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .hiw-step-title { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .hiw-step-body { font-size: 0.875rem; font-weight: 500; color: var(--secondary); line-height: 1.65; }
+
+    /* ── PRO SECTION ──────────────────────────────────────── */
+    .pro-section { background: var(--primary); padding: 90px 24px; position: relative; overflow: hidden; }
+    .pro-section::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 50%, rgba(212,124,90,0.13) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 10% 30%, rgba(101,143,105,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pro-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(250,247,243,0.045) 1px, transparent 1px);
+      background-size: 26px 26px; pointer-events: none;
+    }
+    .pro-inner { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; }
+    .pro-section .section-label { color: var(--accent-light); }
+    .pro-section .section-title { color: var(--bg); }
+    .pro-section .section-sub { color: rgba(250,247,243,0.57); }
+
+    /* Early bird banner */
+    .eb-banner {
+      background: rgba(212,124,90,0.14); border: 1px solid rgba(212,124,90,0.32);
+      border-radius: 13px; padding: 16px 22px; margin-bottom: 36px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .eb-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .eb-text { font-size: 0.9rem; font-weight: 600; color: rgba(250,247,243,0.82); line-height: 1.55; }
+    .eb-text strong { color: var(--accent-light); }
+    .eb-days {
+      margin-left: auto; flex-shrink: 0;
+      background: rgba(212,124,90,0.22); border: 1px solid rgba(212,124,90,0.35);
+      border-radius: 8px; padding: 6px 14px;
+      font-size: 0.78rem; font-weight: 700; color: var(--accent-light);
+      white-space: nowrap; text-align: center; line-height: 1.3;
+    }
+    .eb-days .eb-days-num { font-size: 1.2rem; display: block; }
+
+    /* Pricing grid */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .pc {
+      border-radius: 20px; padding: 32px 28px;
+    }
+    .pc-free {
+      background: rgba(250,247,243,0.05); border: 1px solid rgba(250,247,243,0.1);
+    }
+    .pc-pro {
+      background: var(--bg); border: 2px solid var(--accent);
+      position: relative;
+    }
+    .pc-pro-badge {
+      position: absolute; top: -1px; right: 28px;
+      background: var(--accent); color: var(--white);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 0 0 10px 10px;
+    }
+
+    .pc-tier { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .pc-free .pc-tier { color: rgba(250,247,243,0.4); }
+    .pc-pro .pc-tier { color: var(--accent); }
+
+    .pc-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .pc-free .pc-name { color: var(--bg); }
+    .pc-pro .pc-name { color: var(--primary); }
+
+    .pc-price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+    .pc-amount { font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
+    .pc-free .pc-amount { color: rgba(250,247,243,0.85); }
+    .pc-pro .pc-amount { color: var(--primary); }
+    .pc-period { font-size: 0.875rem; font-weight: 500; }
+    .pc-free .pc-period { color: rgba(250,247,243,0.4); }
+    .pc-pro .pc-period { color: var(--secondary); }
+    .pc-original { font-size: 0.875rem; color: rgba(250,247,243,0.3); text-decoration: line-through; display: none; }
+
+    .pc-note { font-size: 0.82rem; font-weight: 500; margin-bottom: 24px; }
+    .pc-free .pc-note { color: rgba(250,247,243,0.38); }
+    .pc-pro .pc-note { color: var(--secondary); }
+
+    .pc-divider { border: none; border-top: 1px solid; margin: 0 0 22px; }
+    .pc-free .pc-divider { border-color: rgba(250,247,243,0.1); }
+    .pc-pro .pc-divider { border-color: rgba(44,24,16,0.1); }
+
+    .fg { margin-bottom: 18px; }
+    .fg-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .pc-free .fg-label { color: rgba(250,247,243,0.35); }
+    .pc-pro .fg-label { color: var(--secondary); }
+    .fg-items { display: flex; flex-direction: column; gap: 8px; }
+    .fg-row { display: flex; align-items: center; gap: 9px; font-size: 0.875rem; font-weight: 500; }
+    .pc-free .fg-row { color: rgba(250,247,243,0.68); }
+    .pc-pro .fg-row { color: var(--primary); }
+    .fg-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); flex-shrink: 0; }
+
+    .pc-cta {
+      display: block; text-align: center; font-family: 'Quicksand', sans-serif;
+      font-weight: 700; font-size: 0.925rem; border-radius: var(--radius-btn);
+      padding: 14px 28px; text-decoration: none; margin-top: 24px; transition: all 0.2s;
+    }
+    .pc-free .pc-cta {
+      background: rgba(250,247,243,0.07); color: rgba(250,247,243,0.65);
+      border: 1px solid rgba(250,247,243,0.14);
+    }
+    .pc-free .pc-cta:hover { background: rgba(250,247,243,0.13); color: rgba(250,247,243,0.85); }
+    .pc-pro .pc-cta {
+      background: var(--primary); color: var(--bg);
+      box-shadow: 0 4px 20px rgba(44,24,16,0.2);
+    }
+    .pc-pro .pc-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(44,24,16,0.3); }
+    .pc-trial-note { text-align: center; font-size: 0.8rem; font-weight: 500; color: var(--secondary); margin-top: 10px; }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq-section { padding: 90px 24px; background: var(--bg); }
+    .faq-list { max-width: 780px; }
+    .faq-item { border-bottom: 1px solid rgba(44,24,16,0.08); }
+    .faq-item:first-child { border-top: 1px solid rgba(44,24,16,0.08); }
+    .faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0; cursor: pointer; background: none; border: none;
+      font-family: 'Quicksand', sans-serif; font-size: 1rem; font-weight: 700; color: var(--primary);
+      text-align: left;
+    }
+    .faq-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--secondary); transition: transform 0.25s; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
+    .faq-answer-inner { padding-bottom: 22px; }
+    .faq-answer p { font-size: 0.95rem; font-weight: 500; color: var(--secondary); line-height: 1.75; margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+    .faq-answer strong { color: var(--primary); font-weight: 700; }
+
+    /* ── CTA BAND ────────────────────────────────────────── */
+    .cta-band { background: var(--accent); padding: 76px 24px; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 110%, rgba(44,24,16,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-band-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+    .cta-band h2 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); font-weight: 700; color: var(--white); letter-spacing: -0.6px; margin-bottom: 14px; }
+    .cta-band p { font-size: 1.05rem; font-weight: 500; color: rgba(255,253,249,0.75); margin-bottom: 38px; line-height: 1.65; }
+    .cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .cta-btn-w {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--primary);
+      font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 0.925rem;
+      border: none; border-radius: var(--radius-btn); padding: 14px 28px;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(44,24,16,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn-w:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(44,24,16,0.3); }
+    .cta-btn-o {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,253,249,0.85);
+      font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.925rem;
+      border: 2px solid rgba(255,253,249,0.35); border-radius: var(--radius-btn); padding: 13px 26px;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .cta-btn-o:hover { background: rgba(255,253,249,0.1); border-color: rgba(255,253,249,0.65); color: var(--white); }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer { background: var(--primary); padding: 40px 24px; }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-copy { font-size: 0.875rem; font-weight: 500; color: rgba(250,247,243,0.55); }
+    .footer-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.875rem; font-weight: 600; color: rgba(250,247,243,0.75); text-decoration: none; padding: 4px 10px; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .footer-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .footer-links .sep { color: rgba(250,247,243,0.2); }
+    .footer-social { display: flex; align-items: center; gap: 8px; }
+    .social-icon { width: 36px; height: 36px; border-radius: 9px; border: 1px solid rgba(250,247,243,0.15); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s, border-color 0.2s, transform 0.15s; }
+    .social-icon:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .social-icon svg { width: 17px; height: 17px; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-visual { display: none; }
+      .hero { padding: 64px 24px 60px; }
+      .hiw-steps { grid-template-columns: 1fr 1fr; }
+      .hiw-steps::before { display: none; }
+    }
+    @media (max-width: 680px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .zero-box { flex-direction: column; gap: 20px; padding: 28px 24px; }
+      .eb-days { display: none; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-btn-w, .cta-btn-o { width: 100%; max-width: 300px; justify-content: center; }
+    }
+    @media (max-width: 520px) {
+      .nav-dropdown-btn span { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-social { order: -1; }
+    }
+    @media (max-width: 400px) {
+      .hero-title { font-size: 2.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a class="nav-logo" href="/">
+        <div class="nav-logo-mark">
+          <img src="icon.png" alt="Hyperlocal" />
+        </div>
+        <span class="nav-wordmark">Hyperlocal</span>
+      </a>
+
+      <div class="nav-dropdown" id="nav-dd">
+        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false" id="nav-dd-btn">
+          For HBBs
+          <svg class="chevron" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a class="dropdown-item dropdown-active" href="for-hbbs.html" role="menuitem">
+            <span class="dropdown-item-label">Features &amp; Tools</span>
+            <span class="dropdown-item-sub">What HBBs get with Hyperlocal</span>
+          </a>
+          <a class="dropdown-item" href="hbb-setup-guide.html" role="menuitem">
+            <span class="dropdown-item-label">HBB Setup Guide</span>
+            <span class="dropdown-item-sub">Step-by-step setup instructions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener noreferrer">Get the App</a>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-dots" aria-hidden="true"></div>
+  <div class="hero-inner">
+
+    <!-- Left: Copy -->
+    <div class="hero-text">
+      <div class="hero-badge reveal">
+        <div class="hero-badge-dot"></div>
+        For Home-Based Businesses
+      </div>
+      <h1 class="hero-title reveal reveal-delay-1">
+        Built for Singapore's<br/><span class="hl">home-based sellers.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        List your business, manage orders, set your schedule, and collect payments — completely free, right from your phone.
+      </p>
+      <div class="hero-buttons reveal reveal-delay-3">
+        <a class="btn-light" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener">
+          Get started free
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn-ghost-light" href="hbb-setup-guide.html">View setup guide</a>
+      </div>
+    </div>
+
+    <!-- Right: Floating dashboard cards -->
+    <div class="hero-visual" aria-hidden="true">
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(101,143,105,0.2);">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M3 6h12v9a1 1 0 01-1 1H4a1 1 0 01-1-1V6z" stroke="#A8C5A0" stroke-width="1.5"/><path d="M6 6V5a1 1 0 011-1h4a1 1 0 011 1v1" stroke="#A8C5A0" stroke-width="1.5"/><path d="M6 10l2 2 4-3" stroke="#A8C5A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">New order — $24.50 🎉</div>
+          <div class="hcard-sub">Ondeh Ondeh Cake × 1 · Pickup Sat 10am</div>
+        </div>
+      </div>
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(212,124,90,0.2);">
+          <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#E8A98A" stroke-width="1.5"/><path d="M2 7h14" stroke="#E8A98A" stroke-width="1.5"/><path d="M6 2v5M12 2v5" stroke="#E8A98A" stroke-width="1.5" stroke-linecap="round"/><rect x="5" y="10" width="3" height="3" rx="1" fill="#E8A98A"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">Schedule: Mon–Sat open</div>
+          <div class="hcard-sub">3 time slots · Next open: Tomorrow</div>
+        </div>
+      </div>
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(101,143,105,0.2);">
+          <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="5" width="14" height="10" rx="2" stroke="#A8C5A0" stroke-width="1.5"/><path d="M2 9h14" stroke="#A8C5A0" stroke-width="1.5"/><circle cx="5.5" cy="12.5" r="1" fill="#A8C5A0"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">Wallet: $186.20 available</div>
+          <div class="hcard-sub">Payout to bank · 2–3 business days</div>
+        </div>
+      </div>
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(250,247,243,0.08);">
+          <svg viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1.5" stroke="rgba(250,247,243,0.7)" stroke-width="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5" stroke="rgba(250,247,243,0.7)" stroke-width="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5" stroke="rgba(250,247,243,0.7)" stroke-width="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5" stroke="rgba(250,247,243,0.7)" stroke-width="1.5"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">12 products listed</div>
+          <div class="hcard-sub">453 views · 8 in-stock variations</div>
+        </div>
+      </div>
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(212,124,90,0.2);">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M9 2l1.5 4H15l-3.5 2.5 1.5 4.5L9 10.5 5 13l1.5-4.5L3 6h4.5L9 2z" stroke="#E8A98A" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">Loyalty: 11 stamps issued</div>
+          <div class="hcard-sub">3 customers close to reward 🎁</div>
+        </div>
+        <span class="hcard-badge badge-pro">Pro</span>
+      </div>
+
+      <div class="hcard">
+        <div class="hcard-icon" style="background:rgba(101,143,105,0.2);">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M3 3h12v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3z" stroke="#A8C5A0" stroke-width="1.5"/><path d="M6 7h6M6 10h4" stroke="#A8C5A0" stroke-width="1.5" stroke-linecap="round"/><path d="M8 1v2M10 1v2" stroke="#A8C5A0" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-title">Broadcast sent to 34 followers</div>
+          <div class="hcard-sub">New flavour launch · 12 link taps</div>
+        </div>
+        <span class="hcard-badge badge-pro">Pro</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FREE FEATURES ─────────────────────────────────── -->
+<section class="free-section">
+  <div class="section-inner">
+    <span class="section-label reveal">Free features</span>
+    <h2 class="section-title reveal reveal-delay-1">Everything included,<br/>completely free.</h2>
+    <p class="section-sub reveal reveal-delay-2">No subscription required for the essentials. Download the app, submit your listing, and start selling.</p>
+
+    <div class="features-grid">
+
+      <!-- Storefront -->
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-icon-wrap" style="background:rgba(212,124,90,0.1);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#D47C5A" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="#D47C5A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feat-category">Storefront</div>
+        <div class="feat-name">Your public listing</div>
+        <p class="feat-desc">Everything customers see when they find your business — searchable on the app map.</p>
+        <ul class="feat-items">
+          <li>Business profile with photos</li>
+          <li>Products &amp; services catalogue</li>
+          <li>Customer reviews &amp; star ratings</li>
+          <li>Live map pin in your neighbourhood</li>
+          <li>Category tags (Bakery, F&amp;B, Beauty…)</li>
+        </ul>
+      </div>
+
+      <!-- Orders & Fulfilment -->
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-icon-wrap" style="background:rgba(101,143,105,0.1);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" stroke="#658F69" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 6h18" stroke="#658F69" stroke-width="1.8"/><path d="M16 10a4 4 0 01-8 0" stroke="#658F69" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feat-category">Orders &amp; Fulfilment</div>
+        <div class="feat-name">Order management</div>
+        <p class="feat-desc">Accept, track, and fulfil orders from one screen — in real time, on your phone.</p>
+        <ul class="feat-items">
+          <li>Real-time push notifications</li>
+          <li>Confirm, prepare &amp; complete orders</li>
+          <li>Inventory limits per time slot</li>
+          <li>Pickup &amp; delivery fulfilment</li>
+          <li>Customer note &amp; special requests</li>
+        </ul>
+      </div>
+
+      <!-- Scheduling -->
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-icon-wrap" style="background:rgba(44,24,16,0.07);">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="3" stroke="#2C1810" stroke-width="1.8"/><path d="M16 2v4M8 2v4" stroke="#2C1810" stroke-width="1.8" stroke-linecap="round"/><path d="M3 10h18" stroke="#2C1810" stroke-width="1.8"/><rect x="7" y="14" width="4" height="4" rx="1" fill="#D47C5A"/></svg>
+        </div>
+        <div class="feat-category">Scheduling</div>
+        <div class="feat-name">Opening hours &amp; bookings</div>
+        <p class="feat-desc">Set exactly when you're open and what time slots customers can pick from.</p>
+        <ul class="feat-items">
+          <li>Calendar-based availability</li>
+          <li>Flexible time blocks per day (up to 5)</li>
+          <li>Weekly preset for bulk scheduling</li>
+          <li>Advance notice settings (1 day–3 weeks)</li>
+          <li>Block dates for holidays instantly</li>
+        </ul>
+      </div>
+
+      <!-- Finance -->
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-icon-wrap" style="background:rgba(101,143,105,0.1);">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2.5" stroke="#658F69" stroke-width="1.8"/><path d="M2 11h20" stroke="#658F69" stroke-width="1.8"/><circle cx="7" cy="15.5" r="1.5" fill="#658F69"/><path d="M11 15.5h6" stroke="#658F69" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feat-category">Finance</div>
+        <div class="feat-name">Wallet &amp; payouts</div>
+        <p class="feat-desc">Get paid securely via PayNow. Track your earnings and withdraw when you want.</p>
+        <ul class="feat-items">
+          <li>Stripe Connect — link your bank account</li>
+          <li>Available balance &amp; payout history</li>
+          <li>Secure PayNow checkout for customers</li>
+          <li>No platform fee — zero commission</li>
+          <li>Only 1.3% PayNow fee (goes to Stripe)</li>
+        </ul>
+      </div>
+
+      <!-- Promotions -->
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-icon-wrap" style="background:rgba(212,124,90,0.1);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="#D47C5A" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.5" fill="#D47C5A"/></svg>
+        </div>
+        <div class="feat-category">Promotions</div>
+        <div class="feat-name">Promo codes &amp; discounts</div>
+        <p class="feat-desc">Create deals to drive orders — promo codes, percent off, and product bundles.</p>
+        <ul class="feat-items">
+          <li>Percentage or fixed-amount promo codes</li>
+          <li>Per-product discounts &amp; sale pricing</li>
+          <li>Bundle 2+ products into gift sets</li>
+          <li>Variation groups (size, flavour, colour)</li>
+          <li>Max quantity cap per time slot</li>
+        </ul>
+      </div>
+
+      <!-- Messaging -->
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-icon-wrap" style="background:rgba(44,24,16,0.07);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="#2C1810" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#D47C5A" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feat-category">Messaging</div>
+        <div class="feat-name">Customer messaging</div>
+        <p class="feat-desc">Talk to customers directly — before, during, and after their order. Build loyalty from day one.</p>
+        <ul class="feat-items">
+          <li>In-app real-time chat</li>
+          <li>Tied to each order for context</li>
+          <li>Push notification alerts for new messages</li>
+          <li>Works from phone or seller web dashboard</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ZERO FEES ──────────────────────────────────────── -->
+<section class="zero-section">
+  <div class="zero-box reveal">
+    <div class="zero-icon">
+      <svg viewBox="0 0 28 28" fill="none"><path d="M14 4v20M8 8.5h9a3.5 3.5 0 010 7H8M8 15.5h10" stroke="#D47C5A" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div class="zero-content">
+      <h3 class="zero-title">Listing on Hyperlocal is always free.</h3>
+      <p class="zero-body">We charge <strong>zero platform fees and zero commission</strong> on your sales. The only cost is a <strong>1.3% PayNow processing fee</strong> — that goes directly to Stripe, the payment processor. No hidden charges, no monthly minimum, no setup cost.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ───────────────────────────────────── -->
+<section class="hiw-section">
+  <div class="section-inner">
+    <span class="section-label reveal">Getting started</span>
+    <h2 class="section-title reveal reveal-delay-1">Up and selling in 4 steps.</h2>
+    <p class="section-sub reveal reveal-delay-2">From download to first order — here's the full journey.</p>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal reveal-delay-1">
+        <div class="hiw-num">1</div>
+        <div class="hiw-step-title">Download &amp; sign up</div>
+        <p class="hiw-step-body">Get the app on iOS or Android. Create a free account with email, Google, or Apple sign-in.</p>
+      </div>
+      <div class="hiw-step reveal reveal-delay-2">
+        <div class="hiw-num">2</div>
+        <div class="hiw-step-title">Submit your listing</div>
+        <p class="hiw-step-body">Fill in your business name, category, description, and address. We review and approve within 1–3 days.</p>
+      </div>
+      <div class="hiw-step reveal reveal-delay-3">
+        <div class="hiw-num">3</div>
+        <div class="hiw-step-title">Set up your profile</div>
+        <p class="hiw-step-body">Add your products, set opening hours, connect Stripe to receive payments, and choose pickup or delivery.</p>
+      </div>
+      <div class="hiw-step reveal reveal-delay-4">
+        <div class="hiw-num">4</div>
+        <div class="hiw-step-title">Start selling!</div>
+        <p class="hiw-step-body">Your business goes live on the Hyperlocal map. Customers can browse, order, and pay — you get notified instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HYPERLOCAL PRO ─────────────────────────────────── -->
+<section class="pro-section" id="pro">
+  <div class="pro-dots" aria-hidden="true"></div>
+  <div class="pro-inner">
+    <div class="pro-header">
+      <span class="section-label reveal">Hyperlocal Pro</span>
+      <h2 class="section-title reveal reveal-delay-1">Go further with Pro.</h2>
+      <p class="section-sub reveal reveal-delay-2">Unlock the full browser-based seller dashboard with analytics, broadcasts, loyalty cards, and group buys.</p>
+    </div>
+
+    <!-- Early bird banner (shown by JS) -->
+    <div class="eb-banner reveal" id="eb-banner">
+      <div class="eb-icon">⏰</div>
+      <div class="eb-text" id="eb-text">
+        <strong>Early bird pricing active.</strong> Subscribe before 1 July 2026 and lock in $19.90/mo for life — price rises to $29.90/mo at launch.
+      </div>
+      <div class="eb-days" id="eb-days">
+        <span class="eb-days-num" id="eb-days-num">13</span>
+        days left
+      </div>
+    </div>
+
+    <div class="pricing-grid reveal">
+
+      <!-- Free -->
+      <div class="pc pc-free">
+        <div class="pc-tier">Mobile app</div>
+        <div class="pc-name">Free</div>
+        <div class="pc-price">
+          <span class="pc-amount">$0</span>
+          <span class="pc-period">forever</span>
+        </div>
+        <p class="pc-note">No card needed · No hidden fees</p>
+        <hr class="pc-divider"/>
+
+        <div class="fg">
+          <div class="fg-label">Storefront</div>
+          <div class="fg-items">
+            <div class="fg-row"><div class="fg-dot"></div>Business profile</div>
+            <div class="fg-row"><div class="fg-dot"></div>Products &amp; services</div>
+            <div class="fg-row"><div class="fg-dot"></div>Customer reviews</div>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fg-label">Orders &amp; fulfilment</div>
+          <div class="fg-items">
+            <div class="fg-row"><div class="fg-dot"></div>Order management</div>
+            <div class="fg-row"><div class="fg-dot"></div>Inventory management</div>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fg-label">Scheduling</div>
+          <div class="fg-items">
+            <div class="fg-row"><div class="fg-dot"></div>Opening hours</div>
+            <div class="fg-row"><div class="fg-dot"></div>Bookings (service businesses)</div>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fg-label">Finance &amp; promotions</div>
+          <div class="fg-items">
+            <div class="fg-row"><div class="fg-dot"></div>Wallet &amp; payouts</div>
+            <div class="fg-row"><div class="fg-dot"></div>Promo codes &amp; discounts</div>
+            <div class="fg-row"><div class="fg-dot"></div>Customer messaging</div>
+          </div>
+        </div>
+
+        <a class="pc-cta" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener">Download the app</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pc pc-pro">
+        <div class="pc-pro-badge">Most popular</div>
+        <div class="pc-tier">Seller web dashboard</div>
+        <div class="pc-name">Pro</div>
+        <div class="pc-price">
+          <span class="pc-amount" id="pro-amount">$19.90</span>
+          <span class="pc-period">/month</span>
+          <span class="pc-original" id="pro-original">$29.90/mo</span>
+        </div>
+        <p class="pc-note" id="pro-note">Early bird: locked in for life if subscribed before 1 Jul 2026</p>
+        <hr class="pc-divider"/>
+
+        <p style="font-size:0.82rem;font-weight:600;color:var(--secondary);margin-bottom:18px;">Everything in Free, plus:</p>
+
+        <div class="fg">
+          <div class="fg-label" style="color:var(--secondary);">Web dashboard</div>
+          <div class="fg-items">
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Full browser-based seller dashboard</div>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fg-label" style="color:var(--secondary);">Marketing &amp; growth</div>
+          <div class="fg-items">
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Broadcasts to your customer base</div>
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Loyalty stamp card programme</div>
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Group buys</div>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fg-label" style="color:var(--secondary);">Analytics</div>
+          <div class="fg-items">
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Order trends &amp; revenue insights</div>
+            <div class="fg-row" style="color:var(--primary);"><div class="fg-dot"></div>Customer behaviour data</div>
+          </div>
+        </div>
+
+        <a class="pc-cta" href="https://seller.hyperlocal.sg/pro" target="_blank" rel="noopener">Start 30-day free trial</a>
+        <p class="pc-trial-note">No card charged for 30 days · Cancel anytime</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div>
+      <span class="section-label reveal">Common questions</span>
+      <h2 class="section-title reveal reveal-delay-1">FAQs for HBBs</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:40px;">Can't find your answer? Email us at <a href="mailto:admin@hyperlocal.sg" style="color:var(--accent);text-decoration:none;">admin@hyperlocal.sg</a></p>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Is listing on Hyperlocal really free?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes, completely. Creating your listing, adding products, managing orders, setting your schedule, and receiving payouts are all free — forever. The only cost is a <strong>1.3% PayNow processing fee charged by Stripe</strong> when customers place an order. That fee goes to Stripe, not to us. There is no platform fee, no commission on sales, and no monthly subscription for the mobile app.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How do I get paid?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>You connect your business to <strong>Stripe via the Wallet section</strong> in the app. Stripe handles all payments — customers pay via PayNow at checkout, and funds are deposited into your Stripe-linked bank account. You can view your available balance and payout history from the Wallet screen anytime. Stripe Connect is required before you can accept orders; if it's not connected, a red badge will appear on the Wallet icon as a reminder.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What types of businesses can list on Hyperlocal?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hyperlocal is open to any <strong>Singapore-based home-based business</strong>. Current categories include Bakery, Food &amp; Beverage, Catering, Beauty &amp; Wellness, Handicraft, Fashion, and more. If you're operating a legitimate HBB in Singapore, you're welcome to apply. We review each listing before it goes live to ensure quality for customers.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How long does the listing review take?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>We typically review new listings within <strong>1–3 business days</strong>. You'll receive a push notification once your listing is approved and live. If we need more information, we'll reach out via your contact details. Your listing shows as "Under Review" in the app until it's approved.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Can I offer both pickup and delivery?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. In <strong>Order Settings</strong>, you can enable pickup, delivery, or both. If you offer delivery, you set your own delivery fee in SGD. You can also set an advance notice period — same-day up to 3 weeks — so customers must order in advance. You cannot save Order Settings unless at least one fulfilment method is enabled.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          How do I prevent overbooking?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Each product has a <strong>Max Quantity Per Time Slot</strong> setting. Once the limit is hit for a slot, it shows as full and customers can't book it. Combined with time blocks on your schedule (e.g. 10am–12pm, 2pm–5pm), you have full control over how many orders you take at any given time. Use the weekly preset in Opening Hours to set your recurring schedule in bulk rather than one day at a time.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Do I need a licence to sell on Hyperlocal?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>We don't require proof of a licence to list. However, <strong>you are responsible</strong> for ensuring your business complies with relevant Singapore regulations. For example, home-based food businesses should check SFA requirements; for HDB-based businesses, the HDB Home-Based Business Scheme applies. For most craft, beauty, and non-food HBBs there are no specific licensing requirements. When in doubt, check with the relevant authority before listing.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What is Hyperlocal Pro and do I need it?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hyperlocal Pro is an <strong>optional subscription</strong> ($19.90/mo early bird, rising to $29.90/mo) that unlocks: a full browser-based seller dashboard, broadcast messages to your followers, a loyalty stamp card programme, group buys, and business analytics. <strong>You don't need Pro to sell</strong> — all the core essentials are free forever. Pro is for sellers who want to grow their customer base, run marketing campaigns, and get deeper insights into their business. There's a 30-day free trial with no card charged upfront.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What are Broadcasts and how do they work?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Broadcasts (available on Pro) let you <strong>send a push notification</strong> directly to all customers who have saved or previously ordered from your business. You can attach a product or a voucher to the broadcast — perfect for announcing new products, limited runs, or seasonal specials. It's a direct line to your warm customer base, no social media algorithm involved.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          What is the Loyalty Stamp Card programme?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Available on Pro, the Loyalty Stamp Card lets you <strong>reward repeat customers</strong>. You set how many stamps are needed (1–50) and the reward amount in SGD. Customers earn a stamp automatically with each order. When they collect enough stamps, they get a discount reward — encouraging them to keep coming back to your business. You can see live stats on how many customers are participating and how close they are to earning a reward.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ───────────────────────────────────────── -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Ready to list your business?</h2>
+    <p>Join 80+ home-based sellers already on Hyperlocal. It's free to start, takes minutes to set up, and you're on the map the same day you're approved.</p>
+    <div class="cta-buttons">
+      <a class="cta-btn-w" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M14.318 10.602c-.013-1.7.926-2.968 2.82-3.906-1.054-1.303-2.635-2.027-4.396-1.958-1.852.072-3.137 1.107-3.948 1.107-.855 0-2.006-1.052-3.518-1.009-1.82.055-3.51 1.08-4.447 2.716C-.092 10.86.82 15.434 2.676 17.9c.906 1.273 1.979 2.688 3.393 2.636 1.367-.055 1.882-.867 3.533-.867 1.638 0 2.12.867 3.552.837 1.469-.027 2.394-1.26 3.3-2.534.74-1.028 1.045-2.03 1.06-2.083-.023-.01-2.18-.836-2.196-3.287z" fill="#2C1810"/><path d="M12.18 3.456C12.91 2.576 13.44 1.38 13.293 0c-1.189.043-2.62.792-3.468 1.74C9.03 2.638 8.417 3.86 8.59 5.066c1.31.1 2.648-.663 3.59-1.61z" fill="#2C1810"/></svg>
+        Download for iOS
+      </a>
+      <a class="cta-btn-w" href="https://play.google.com/store/apps/details?id=sg.hyperlocal.app" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2.5 1.5L11.5 10L2.5 18.5C2 18.2 1.7 17.7 1.7 17V3C1.7 2.3 2 1.8 2.5 1.5Z" fill="#D47C5A"/><path d="M14.5 7L2.5 1.5L11.5 10L14.5 13L17.5 10L14.5 7Z" fill="#658F69"/><path d="M11.5 10L14.5 13L17.5 10C17.9 9.7 17.9 9.3 17.5 9L14.5 7L11.5 10Z" fill="#8B7B6B"/><path d="M2.5 18.5L11.5 10L14.5 13C14.5 13 6 17.5 2.5 18.5Z" fill="#2C1810"/></svg>
+        Download for Android
+      </a>
+      <a class="cta-btn-o" href="hbb-setup-guide.html">Read the setup guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Hyperlocal. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="for-hbbs.html">For HBBs</a>
+      <span class="sep">|</span>
+      <a href="hbb-setup-guide.html">HBB Setup Guide</a>
+      <span class="sep">|</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <span class="sep">|</span>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+    <div class="footer-social">
+      <a class="social-icon" href="https://www.instagram.com/hyperlocal_app" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#FAF7F3" stroke-opacity=".75" stroke-width="1.7"/><circle cx="12" cy="12" r="4.3" stroke="#FAF7F3" stroke-opacity=".75" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.1" fill="#FAF7F3" fill-opacity=".75"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Scroll reveal */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function(el) { el.classList.add('visible'); }); return; }
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').style.maxHeight = '0';
+        i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        var ans = item.querySelector('.faq-answer');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* Nav dropdown toggle (touch/click) */
+  (function() {
+    var dd = document.getElementById('nav-dd');
+    var btn = document.getElementById('nav-dd-btn');
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function() {
+      dd.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  })();
+
+  /* Early bird pricing */
+  (function() {
+    var cutoff = new Date('2026-07-01T00:00:00+08:00');
+    var now = new Date();
+    var banner = document.getElementById('eb-banner');
+    var proAmount = document.getElementById('pro-amount');
+    var proOriginal = document.getElementById('pro-original');
+    var proNote = document.getElementById('pro-note');
+    var ebText = document.getElementById('eb-text');
+    var ebDaysNum = document.getElementById('eb-days-num');
+
+    if (now < cutoff) {
+      var msLeft = cutoff - now;
+      var daysLeft = Math.ceil(msLeft / (1000 * 60 * 60 * 24));
+      if (ebDaysNum) ebDaysNum.textContent = daysLeft;
+      if (ebText) ebText.innerHTML = '<strong>Early bird offer — ' + daysLeft + ' day' + (daysLeft === 1 ? '' : 's') + ' left.</strong> Subscribe before 1 July 2026 and lock in $19.90/mo for life — price rises to $29.90/mo at launch.';
+      if (proAmount) proAmount.textContent = '$19.90';
+      if (proOriginal) proOriginal.style.display = 'inline';
+    } else {
+      if (banner) banner.style.display = 'none';
+      if (proAmount) proAmount.textContent = '$29.90';
+      if (proNote) proNote.textContent = 'Billed monthly · Cancel anytime';
+    }
+  })();
+</script>
+
+</body>
+</html>

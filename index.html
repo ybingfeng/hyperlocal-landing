@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyperlocal — Discover Singapore's Home-Based Businesses</title>
-  <meta name="description" content="Discover and order from Singapore's best home-based businesses. Browse 40+ local HBBs — food, baked goods, beauty and more — on the Hyperlocal app. Free on iOS and Android." />
+  <meta name="description" content="Discover and order from Singapore's best home-based businesses. Browse 60+ local HBBs — food, baked goods, beauty and more — on the Hyperlocal app. Free on iOS and Android." />
   <link rel="canonical" href="https://hyperlocal.sg/" />
   <link rel="icon" href="icon.png" type="image/png" />
 
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hyperlocal.sg/" />
   <meta property="og:title" content="Hyperlocal — Discover Singapore's Home-Based Businesses" />
-  <meta property="og:description" content="Browse 40+ home-based food, beauty, and lifestyle businesses near you. Order directly, pick your time slot, and support your local community." />
+  <meta property="og:description" content="Browse 60+ home-based food, beauty, and lifestyle businesses near you. Order directly, pick your time slot, and support your local community." />
   <meta property="og:image" content="https://hyperlocal.sg/Hyperlocal%20iPhone%20Frame.png" />
   <meta property="og:site_name" content="Hyperlocal" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Hyperlocal — Discover Singapore's Home-Based Businesses" />
-  <meta name="twitter:description" content="Browse 40+ home-based food, beauty, and lifestyle businesses near you. Free on iOS and Android." />
+  <meta name="twitter:description" content="Browse 60+ home-based food, beauty, and lifestyle businesses near you. Free on iOS and Android." />
   <meta name="twitter:image" content="https://hyperlocal.sg/Hyperlocal%20iPhone%20Frame.png" />
 
   <!-- Schema.org structured data -->
@@ -154,6 +154,36 @@
       transition: color 0.2s;
     }
     .nav-link:hover { color: var(--primary); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-btn {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 0.875rem; font-weight: 600; color: var(--secondary);
+      background: none; border: none; cursor: pointer;
+      font-family: 'Quicksand', sans-serif; padding: 0; transition: color 0.2s;
+    }
+    .nav-dropdown-btn:hover, .nav-dropdown.open .nav-dropdown-btn { color: var(--primary); }
+    .nav-dropdown-btn .chevron { width: 14px; height: 14px; transition: transform 0.22s; flex-shrink: 0; }
+    .nav-dropdown.open .chevron, .nav-dropdown:hover .chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 8px); left: -12px;
+      background: var(--white); border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(44,24,16,0.14), 0 2px 8px rgba(44,24,16,0.06);
+      border: 1px solid rgba(44,24,16,0.08); padding: 6px;
+      min-width: 224px; opacity: 0; visibility: hidden;
+      transform: translateY(-6px); transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-item {
+      display: block; padding: 10px 14px; border-radius: 9px; text-decoration: none; transition: background 0.15s;
+    }
+    .dropdown-item:hover { background: var(--surface); }
+    .dropdown-item-label { font-size: 0.875rem; font-weight: 700; color: var(--primary); display: block; }
+    .dropdown-item-sub { font-size: 0.775rem; font-weight: 500; color: var(--secondary); display: block; margin-top: 1px; }
+
     .nav-cta {
       background: var(--accent);
       color: var(--white);
@@ -687,7 +717,24 @@
           </div>
           <span class="nav-wordmark">Hyperlocal</span>
         </a>
-        <a class="nav-link" href="hbb-setup-guide.html">HBB Setup Guide</a>
+        <div class="nav-dropdown" id="nav-dd">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false" id="nav-dd-btn">
+            For HBBs
+            <svg class="chevron" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a class="dropdown-item" href="for-hbbs.html" role="menuitem">
+              <span class="dropdown-item-label">Features &amp; Tools</span>
+              <span class="dropdown-item-sub">What HBBs get with Hyperlocal</span>
+            </a>
+            <a class="dropdown-item" href="hbb-setup-guide.html" role="menuitem">
+              <span class="dropdown-item-label">HBB Setup Guide</span>
+              <span class="dropdown-item-sub">Step-by-step setup instructions</span>
+            </a>
+          </div>
+        </div>
       </div>
       <a class="nav-cta" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener noreferrer">Get the App</a>
     </div>
@@ -715,7 +762,7 @@
           Singapore's<br/>Home-Based<br/><span>Businesses.</span>
         </h1>
         <p class="hero-sub reveal reveal-delay-2">
-          Browse 40+ local home cooks, bakers, beauty sellers and more near you. Order directly, pick your time slot, and support your neighbourhood.
+          Browse 60+ local home cooks, bakers, beauty sellers and more near you. Order directly, pick your time slot, and support your neighbourhood.
         </p>
         <div class="hero-buttons reveal reveal-delay-3">
           <a class="btn-store btn-apple" href="https://apps.apple.com/us/app/hyperlocal-singapore/id6761169591" target="_blank" rel="noopener noreferrer">
@@ -749,7 +796,7 @@
               <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#C4A882"/><circle cx="16" cy="13" r="5" fill="#8B6A3E"/><path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="#8B6A3E"/></svg>
             </div>
           </div>
-          <p class="proof-text"><strong>40+ businesses</strong> listed across Singapore</p>
+          <p class="proof-text"><strong>60+ businesses</strong> listed across Singapore</p>
         </div>
       </div>
       <div class="hero-phone-mobile" aria-hidden="true">
@@ -869,6 +916,24 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- ── Nav dropdown JS ──────────────────────────────────────────── -->
+  <script>
+    (function() {
+      var dd = document.getElementById('nav-dd');
+      var btn = document.getElementById('nav-dd-btn');
+      if (!dd || !btn) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', function() {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })();
+  </script>
 
   <!-- ── Scroll reveal JS ────────────────────────────────────────── -->
   <script>
